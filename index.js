@@ -6,7 +6,7 @@ const port = process.env.PORT || 3001
 
 app.use(cors())
 
-app.use((req, res, next) => {
+app.use((req, res) => {
     const reqUrl = req.originalUrl.replace('/', '')
     const url = `https://api.websitecarbon.com/site?url=http%3A%2F%2F${reqUrl}`
     console.log(url)
