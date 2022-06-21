@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
@@ -8,7 +9,7 @@ app.use(cors())
 
 app.use((req, res) => {
     const reqUrl = req.originalUrl.replace('/', '')
-    const url = `https://api.websitecarbon.com/site?url=http%3A%2F%2F${reqUrl}`
+    const url = `${process.env.API_URL}${reqUrl}`
     console.log(url)
     axios.get(url)
     .then(response => {
@@ -19,5 +20,5 @@ app.use((req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('Listening on ', port)
+    console.log('Listening on', port)
 })
