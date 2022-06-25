@@ -10,10 +10,8 @@ app.use(cors())
 app.use((req, res) => {
     const reqUrl = req.originalUrl.replace('/', '')
     const url = `${process.env.API_URL}${reqUrl}`
-    console.log(url)
     axios.get(url)
     .then(response => {
-        console.log(response.data)
         res.json(response.data)
     })
     .catch(e => console.error("err", e.message))
